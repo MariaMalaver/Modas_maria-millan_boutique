@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modas María & Millán Boutique</title>
+  <meta name="description" content="Prendas suaves, naturales y elegantes para que te sientas bien.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Variables ===== */
+    :root {
+      --fondo: #faf8f3;
+      --marron: #8b5a4e;
+      --marron-oscuro: #6b4a42;
+      --dorado: #d6b98a;
+      --rosa: #d9a0a0;
+      --blanco: #ffffff;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Jost", system-ui, sans-serif;
+    }
+
+    /* ===== Base ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--fondo);
+      color: var(--marron-oscuro);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.5;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--marron); outline-offset: 3px; }
+    h1, h2, h3 { font-family: var(--serif); font-weight: 500; margin: 0; }
+
+    /* ===== Cabecera ===== */
+    .cabecera {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 4.5rem;
+      border-bottom: 1px solid var(--dorado);
+    }
+    .logo { display: flex; align-items: center; gap: 1.6rem; }
+    .logo img { width: 92px; height: 92px; border-radius: 50%; object-fit: cover; }
+    .marca { display: grid; grid-template-columns: auto auto; line-height: 1; }
+    .marca-sup, .marca-inf {
+      font-family: var(--serif);
+      font-size: 0.6rem;
+      letter-spacing: 0.35em;
+      color: var(--marron);
+    }
+    .marca-sup { grid-column: 1; }
+    .marca-nombre {
+      grid-column: 1 / -1;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.9rem;
+      color: var(--marron);
+      padding: 0.15rem 0 0.4rem;
+    }
+    .marca-inf { grid-column: 1 / -1; justify-self: end; padding-right: 0.2rem; }
+
+    .nav { display: flex; align-items: center; gap: 2.4rem; }
+    .nav ul { display: flex; gap: 2.4rem; list-style: none; margin: 0; padding: 0; }
+    .nav a { font-weight: 500; font-size: 1.05rem; color: var(--marron); }
+    .nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 4px; }
+    .nav button { background: none; border: 0; padding: 0; cursor: pointer; color: var(--marron); }
+
+    /* ===== Hero ===== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: min(1320px, calc(100% - 9rem));
+      min-height: 490px;
+      margin: 3.5rem auto 3rem;
+      border: 1px solid var(--dorado);
+    }
+    .hero-texto {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 2.5rem 3rem 2.5rem 4rem;
+    }
+    .hero h1 { font-size: clamp(2.2rem, 4.2vw, 3.5rem); line-height: 1.15; color: var(--marron); }
+    .hero hr { width: 4.6rem; border: 0; border-top: 1px solid var(--dorado); margin: 0; }
+    .hero p { margin: 0; font-size: 1.15rem; color: #3d3330; }
+    .boton {
+      display: inline-block;
+      background: var(--marron);
+      color: var(--blanco);
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      padding: 1rem 2.5rem;
+      border-radius: 3px;
+    }
+    .boton:hover { background: var(--marron-oscuro); }
+    .hero-imagen { border-left: 1px solid var(--marron-oscuro); }
+    .hero-imagen img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ===== Novedades ===== */
+    .novedades { width: min(1320px, calc(100% - 9rem)); margin: 0 auto; padding: 0 2.5rem 4rem; }
+    .novedades > h2 {
+      position: relative;
+      display: inline-block;
+      font-size: 2.6rem;
+      color: var(--marron);
+      margin-bottom: 3rem;
+      padding-bottom: 0.4rem;
+    }
+    .novedades > h2::after {   /* subrayado dorado corto, desplazado */
+      content: "";
+      position: absolute;
+      left: 3.6rem;
+      bottom: 0;
+      width: 4.6rem;
+      border-bottom: 1px solid var(--dorado);
+    }
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      list-style: none;
+      padding: 0;
+    }
+    .producto { display: flex; flex-direction: column; gap: 0.6rem; }
+    .producto-foto { position: relative; background: #efeae0; aspect-ratio: 4 / 5; }
+    .producto-foto img { width: 100%; height: 100%; object-fit: cover; }
+    .etiqueta {
+      position: absolute;
+      top: 0.7rem;
+      left: 0.5rem;
+      background: var(--rosa);
+      color: var(--blanco);
+      font-size: 0.6rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.6rem;
+    }
+    .producto h3, .producto .descripcion, .producto .precio {
+      background: var(--blanco);
+      border: 1px solid var(--dorado);
+      margin: 0;
+      padding: 0.5rem 0.7rem;
+    }
+    .producto h3 { font-size: 1.05rem; color: var(--marron); }
+    .producto .descripcion { font-size: 0.8rem; }
+    .producto .precio { align-self: flex-start; font-size: 0.85rem; font-weight: 400; }
+
+    /* ===== Pie ===== */
+    .pie {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 1.4rem 2.5rem;
+      background: var(--marron);
+      color: #f3e8e2;
+      font-size: 0.75rem;
+    }
+    .pie nav ul { display: flex; list-style: none; margin: 0; padding: 0; }
+    .pie nav li + li { border-left: 1px solid rgba(255, 255, 255, 0.35); }
+    .pie nav a { padding: 0 1rem; }
+    .redes { display: flex; gap: 1rem; }
+    .redes svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 760px) {
+      .cabecera { padding: 0.6rem 1rem; }
+      .logo img { width: 56px; height: 56px; }
+      .logo { gap: 0.8rem; }
+      .marca-nombre { font-size: 1.2rem; }
+      .novedades { width: 100%; padding: 0 1rem 3rem; }
+      .nav ul { gap: 1rem; }
+      .hero { grid-template-columns: 1fr; width: calc(100% - 2rem); margin: 1.5rem 1rem; }
+      .hero-texto { padding: 2rem 1.5rem; }
+      .hero-imagen { order: -1; aspect-ratio: 4 / 3; }
+      .pie { justify-content: center; text-align: center; padding: 1.4rem 1rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== CABECERA ========== -->
+  <header class="cabecera">
+    <a href="index.html" class="logo" aria-label="Modas María & Millán Boutique, inicio">
+      <img src="img/logo.png" alt="" width="92" height="92">
+      <span class="marca">
+        <span class="marca-sup">MODAS</span>
+        <span class="marca-nombre">María &amp; Millán</span>
+        <span class="marca-inf">BOUTIQUE</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Principal">
+      <ul>
+        <li><a href="index.html" aria-current="page">Inicio</a></li>
+        <li><a href="mujer.html">Mujer</a></li>
+        <li><a href="hombre.html">Hombre</a></li>
+      </ul>
+      <button type="button" aria-label="Ver carrito">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8a3 3 0 0 1 6 0"/>
+        </svg>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" aria-labelledby="titulo-hero">
+      <div class="hero-texto">
+        <h1 id="titulo-hero">Moda, comodidad y cuidado para tu piel</h1>
+        <hr>
+        <p>Prendas suaves, naturales y elegantes para que te sientas bien</p>
+        <a href="coleccion.html" class="boton">Ver colección</a>
+      </div>
+      <div class="hero-imagen">
+        <img src="img/tienda.jpg" alt="Interior de la boutique con prendas en tonos rosa, crema y verde">
+      </div>
+    </section>
+
+    <!-- ========== NOVEDADES ========== -->
+    <section class="novedades" aria-labelledby="titulo-novedades">
+      <h2 id="titulo-novedades">Novedades</h2>
+
+      <ul class="productos">
+        <li>
+          <article class="producto">
+            <div class="producto-foto">
+              <span class="etiqueta">NOVEDAD</span>
+              <img src="img/camiseta-lino-suave.jpg" alt="Camiseta Lino Suave en color crema" loading="lazy">
+            </div>
+            <h3>Camiseta Lino Suave</h3>
+            <p class="descripcion">100% algodón orgánico hipoalergénico</p>
+            <p class="precio">29,90 €</p>
+          </article>
+        </li>
+
+        <li>
+          <article class="producto">
+            <div class="producto-foto">
+              <span class="etiqueta">NOVEDAD</span>
+              <img src="img/camiseta-basica-arena.jpg" alt="Camiseta Básica Arena" loading="lazy">
+            </div>
+            <h3>Camiseta Básica Arena</h3>
+            <p class="descripcion">Algodón orgánico suave y transpirable</p>
+            <p class="precio">27,90 €</p>
+          </article>
+        </li>
+
+        <li>
+          <article class="producto">
+            <div class="producto-foto">
+              <span class="etiqueta">NOVEDAD</span>
+              <img src="img/camisa-lino-marfil.jpg" alt="Camisa Lino Marfil colgada de una percha" loading="lazy">
+            </div>
+            <h3>Camisa Lino Marfil</h3>
+            <p class="descripcion">Lino 100%, ligera y transpirable</p>
+            <p class="precio">49,90 €</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ========== PIE ========== -->
+  <footer class="pie">
+    <small>© 2026 Modas María & Millán Boutique</small>
+
+    <nav aria-label="Información">
+      <ul>
+        <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+        <li><a href="envio-devoluciones.html">Envío y devoluciones</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="redes">
+      <a href="#" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8"/></svg>
+      </a>
+      <a href="#" aria-label="Facebook">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M13 21v-8h3M13 13h-2m2 0V9.5A2.5 2.5 0 0 1 15.5 7H16"/></svg>
+      </a>
+      <a href="#" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.2-4A8 8 0 1 1 8 18.8L4 20z"/></svg>
+      </a>
+    </div>
+  </footer>
+
+</body>
+</html>
