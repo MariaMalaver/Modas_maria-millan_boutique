@@ -1,4 +1,4 @@
-# Modas_maria-millan_boutique
+# Modas_maria&millan_boutique
 Esta página web esta creada para una tienda de ropa especializada en el diseño de ropa para personas con alergias o sensibilidad a los textiles de la ropa.
 Por lo cual en esta tienda se vende ropa con textiles y materiales naturales q son hipoalergénicos.
 
